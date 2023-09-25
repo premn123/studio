@@ -1,0 +1,379 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Your Website Name</title>
+    <style>
+        /* Reset some default browser styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        /* Global styles */
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+            line-height: 1.6;
+        }
+
+        /* Header styles */
+        header {
+            background-color: #333;
+            color: #fff;
+            padding: 10px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center; /* Align logo and website name vertically */
+        }
+
+        .logo img {
+            width: 50px; /* Adjust the width as needed */
+            height: auto;
+            margin-right: 10px; /* Add spacing between the logo and website name */
+        }
+
+        .logo a {
+            color: #fff;
+            text-decoration: none;
+            font-size: 24px;
+        }
+
+        /* Menu bar styles */
+        nav ul.menu {
+            list-style: none;
+            display: flex;
+            margin-right: 30px; /* Add spacing between menu and search bar */
+        }
+
+        nav ul.menu li {
+            margin-right: 10px; /* Add spacing between menu items */
+            position: relative; /* Enable relative positioning for submenus */
+        }
+
+        nav ul.menu li:last-child {
+            margin-right: 0; /* Remove spacing from the last menu item */
+        }
+
+        nav ul.menu li a {
+            color: #fff;
+            text-decoration: none;
+            font-size: 18px;
+        }
+
+        /* Submenu styles */
+        .submenu {
+            display: none;
+            position: absolute;
+            top: 100%;
+            left: 0;
+            background-color: #333;
+            z-index: 1; /* Ensure submenu appears above other content */
+        }
+
+        nav ul.menu li:hover .submenu {
+            display: block; /* Show submenu on hover */
+        }
+
+        .submenu li {
+            padding: 10px;
+        }
+
+        .submenu a {
+            color: #fff;
+            text-decoration: none;
+        }
+
+        /* Dropdown menu styles */
+        .dropdown-menu {
+            display: none;
+            position: absolute;
+            top: 0;
+            left: 100%;
+            background-color: #333;
+            z-index: 2; /* Ensure dropdown menu appears above submenu */
+        }
+
+        .dropdown:hover .dropdown-menu {
+            display: block; /* Show dropdown menu on hover */
+        }
+
+        .dropdown-menu li {
+            padding: 10px;
+        }
+
+        .dropdown-menu a {
+            color: #fff;
+            text-decoration: none;
+        }
+
+        /* Main content styles */
+        main {
+            max-width: 1200px; /* Set a maximum width for the main content area */
+            margin: 0 auto; /* Center the main content and add spacing */
+            padding: 20px; /* Add spacing inside the main content area */
+            background-color: #fff; /* Set a background color for the main content area */
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Add a subtle box shadow for visual separation */
+        }
+
+        /* Video container styles */
+        .video-container {
+            display: flex;
+            flex-wrap: wrap; /* Allow videos to wrap to the next line if needed */
+            justify-content: space-between; /* Distribute videos evenly across the container */
+        }
+
+        /* Video styles */
+        .video {
+            width: calc(50% - 20px); /* Adjust the width and margin as needed */
+            margin-right: 20px; /* Add spacing between videos */
+            margin-bottom: 20px; /* Add spacing between rows of videos */
+        }
+
+        .video:last-child {
+            margin-right: 0; /* Remove margin from the last video in each row */
+        }
+
+        .video iframe {
+            width: 100%; /* Make the video iframe responsive to the container width */
+            height: auto; /* Maintain the aspect ratio of the video */
+        }
+
+        .video-details h1 {
+            font-size: 24px;
+            margin-top: 10px;
+        }
+
+        .video-details p {
+            font-size: 16px;
+            color: #555;
+        }
+
+        .comments h2 {
+            font-size: 20px;
+            margin-top: 20px;
+        }
+
+        .comment {
+            display: flex;
+            margin-top: 10px;
+        }
+
+        .comment img {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            margin-right: 10px;
+        }
+
+        .comment-text p {
+            font-size: 16px;
+            color: #333;
+        }
+
+        /* Footer styles */
+        footer {
+            background-color: #333;
+            color: #fff;
+            padding: 10px 20px;
+            text-align: center;
+        }
+
+        /* Footer Menu styles */
+        .footer-menu {
+            text-align: center; /* Center-align the menu items */
+        }
+
+        .footer-menu ul {
+            list-style: none;
+            padding: 0;
+            display: flex; /* Use flexbox layout */
+            justify-content: center; /* Center-align the menu items horizontally */
+            align-items: center; /* Center-align the menu items vertically */
+        }
+
+        .footer-menu li {
+            margin: 0 10px; /* Add left and right margin to separate menu items */
+        }
+
+        .footer-menu a {
+            text-decoration: none;
+            color: #fff;
+            font-weight: bold;
+        }
+
+        .footer-menu a:hover {
+            text-decoration: underline; /* Add an underline on hover */
+        }
+
+        /* Media query for screens with a maximum width of 768px (typical for smartphones) */
+        @media screen and (max-width: 768px) {
+            /* Adjust styles for smaller screens here */
+            header {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .logo {
+                margin-bottom: 10px;
+                text-align: center;
+            }
+
+            .logo img {
+                margin-right: 0;
+            }
+
+            .search-bar {
+                margin-top: 10px;
+            }
+
+            nav ul.menu {
+                flex-direction: column;
+                margin-right: 0;
+                margin-top: 20px;
+            }
+
+            nav ul.menu li {
+                margin-right: 0;
+                margin-bottom: 10px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="logo">
+            <img src="image/logo.png.png" alt="Your Website Logo">
+            <a href="#">Niharika Digital Studio</a>
+        </div>
+        <nav>
+            <ul class="menu">
+                <li><a href="#">Home</a></li>
+                <li>
+                    <a href="#">Videos</a>
+                    <ul class="submenu">
+                        <li><a href="#">Featured</a></li>
+                        <li><a href="#">Trending</a></li>
+                        <li><a href="#">Top Rated</a></li>
+                        <!-- Add a dropdown menu here -->
+                        <li class="dropdown">
+                            <a href="#">Categories</a>
+                            <ul class="dropdown-menu">
+                                <li><a href="#">Category 1</a></li>
+                                <li><a href="#">Category 2</a></li>
+                                <li><a href="#">Category 3</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                </li>
+                <li><a href="#">About</a></li>
+                <li><a href="#">Contact</a></li>
+            </ul>
+        </nav>
+        <div class="search-bar">
+            <input type="text" placeholder="Search...">
+            <button>Search</button>
+        </div>
+    </header>
+
+    <!-- Main Content Area -->
+    <main>
+        <div class="video-container">
+            <!-- Video 1 -->
+            <div class="video">
+                <iframe width="100" height="300" src="https://www.youtube.com/embed/ifMUZcMg5bE?si=6eCI0pssVYO3BIGa" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+                <h2>Video Title 1</h2>
+                <p>Description for Video 1 goes here.</p>
+            </div>
+
+            <!-- Video 2 -->
+            <div class="video">
+                <iframe width="100" height="200" src="https://www.youtube.com/embed/6mD8cSe1gvI?si=tgdwwFW-uWI2Vltm" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+                <h2>Video Title 2</h2>
+                <p>Description for Video 2 goes here.</p>
+            </div>
+
+            <!-- Video 3 -->
+            <div class="video">
+                <iframe width="100" height="200" src="https://www.youtube.com/embed/ES5x88SNEdI?si=rAdxSgZww5Sm5EWr" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+                <h2>Video Title 3</h2>
+                <p>Description for Video 3 goes here.</p>
+            </div>
+
+            <!-- Video 4 -->
+            <div class="video">
+                <iframe width="100" height="200" src="https://www.youtube.com/embed/44CR8Ovc8tQ?si=Z98bHF1KFywNEV-B" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+                <h2>Video Title 4</h2>
+                <p>Description for Video 4 goes here.</p>
+            </div>
+
+            <!-- Video 5 -->
+            <div class="video">
+                <iframe width="100" height="200" src="https://www.youtube.com/embed/kVyWl_rMq9o?si=bemcmb1k0TGSlfV4" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+                <h2>Video Title 5</h2>
+                <p>Description for Video 5 goes here.</p>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2023 Niharika Digital Studio. All rights reserved.</p>
+         <!-- Footer Menu -->
+         <nav class="footer-menu">
+            <ul>
+                <li><a href="#">Privacy Policy</a></li>
+                <li><a href="#">Terms of Service</a></li>
+                <li><a href="#">Contact Us</a></li>
+            </ul>
+        </nav>
+    </footer>
+
+    <script>
+        // Function to toggle the display of submenu and dropdown menu
+        function toggleSubmenu() {
+            const submenu = this.querySelector('.submenu');
+            if (submenu) {
+                submenu.classList.toggle('show');
+            }
+
+            const dropdownMenu = this.querySelector('.dropdown-menu');
+            if (dropdownMenu) {
+                dropdownMenu.classList.toggle('show');
+            }
+        }
+
+        // Add event listeners to menu items with submenus
+        const menuItemsWithSubmenus = document.querySelectorAll('.submenu, .dropdown');
+        menuItemsWithSubmenus.forEach((menuItem) => {
+            menuItem.addEventListener('mouseenter', toggleSubmenu);
+            menuItem.addEventListener('mouseleave', toggleSubmenu);
+        });
+
+        // Close submenus and dropdown menus when clicking outside
+        document.addEventListener('click', (event) => {
+            menuItemsWithSubmenus.forEach((menuItem) => {
+                if (!menuItem.contains(event.target)) {
+                    const submenu = menuItem.querySelector('.submenu');
+                    if (submenu) {
+                        submenu.classList.remove('show');
+                    }
+
+                    const dropdownMenu = menuItem.querySelector('.dropdown-menu');
+                    if (dropdownMenu) {
+                        dropdownMenu.classList.remove('show');
+                    }
+                }
+            });
+        });
+    </script>
+</body>
+</html>
